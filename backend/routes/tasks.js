@@ -132,59 +132,6 @@ router.post('/addtask', fetchuser, [
 
 
 
-
-// // ROUTE 3: Update an existing task using PUT "api/tasks/updatetask/:id" (Login required)
-// router.put('/updatetask/:id', fetchuser, async (req, res) => {
-//   console.log('Update Task Route Hit');
-//   try {
-//     const { title, description, tag, duedate, status, priority, comment } = req.body;
-
-//     // Create a newTask object with the updated fields
-//     const newTask = {};
-//     if (title) newTask.title = title;
-//     if (description) newTask.description = description;
-//     if (tag) newTask.tag = tag;
-//     if (status) newTask.status = status;
-//     if (duedate) newTask.duedate = duedate;
-//     if (priority) newTask.priority = priority;
-
-//     if (comment) {
-//       newTask.comments = [
-//         ...req.task.comments,
-//         {
-//           user: req.user.id,
-//           text: comment
-//         }
-//       ];
-//     }
-
-//     // Find the task to be updated and update it
-//     const updatedTask = await Task.findByIdAndUpdate(
-//       req.params.id,
-//       { $set: newTask },
-//       { new: true }
-//     );
-
-//     if (!updatedTask) {
-//       return res.status(404).json({ error: 'Task not found' });
-//     }
-
-//     // Ensure that the user making the request is allowed to update the task
-//     if (updatedTask.user.toString() !== req.user.id) {
-//       return res.status(401).json({ error: 'Not allowed to update this task' });
-//     }
-
-//     console.log('Updated Task:', updatedTask);
-//     res.json({ task: updatedTask });
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
-
-
-
-
 // ROUTE 3: Update an existing task using PUT "api/tasks/updatetask/:id" (Login required)
 router.put('/updatetask/:id', fetchuser, async (req, res) => {
   console.log('Update Task Route Hit');
