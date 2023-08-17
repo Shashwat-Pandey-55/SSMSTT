@@ -16,8 +16,8 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/tasks', require('./routes/tasks'));
 
-// Notification Schedules and Priority Update
-cron.schedule("0 */12 * * *", async () => {
+// Notification Schedules and Priority Update Using NODE-CRON npm package
+cron.schedule("0 */10 * * *", async () => {         // check after every 10 hours and setting the priority accordingly
   try {
     const date = new Date();
     const tasks = await Task.find();
